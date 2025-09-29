@@ -1,9 +1,17 @@
-import React from "react";
+import { Link, useLoaderData } from "react-router";
 
 const Users = () => {
+  const users = useLoaderData();
+
   return (
     <div>
-      <h1>hello users</h1>
+      {users.map((user) => (
+        <div className=" border  m-4 p-2" key={user.id}>
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+          <Link to={`/user/${user.id}`}>show Details</Link>
+        </div>
+      ))}
     </div>
   );
 };
